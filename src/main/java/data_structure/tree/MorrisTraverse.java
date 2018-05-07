@@ -4,15 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Morris 遍历
  * MorrisTraverse的优点就是非递归，因此不需要使用栈，空间复杂度只有O(1)。使用O(1)
- * 的空间复杂度进行遍历，最大的难点在于遍历到子节点的时候如何返回到父节点，因为没有
- * 栈或者队列等辅助空间记录(假设节点没有指向父节点的指针)，为了解决这个问题Morris方
- * 法使用线索二叉树(ThreadedBinaryTree)来解决这个问题。
+ * 的空间复杂度进行遍历，最大的难点在于遍历完左子节点(树)的时候如何返回到父节点，因为
+ * 没有栈或者队列等辅助空间记录(假设节点没有指向父节点的指针)，为了解决这个问题Morris
+ * 方法使用线索二叉树(ThreadedBinaryTree)来解决这个问题。
+ * <p>
+ * 线索二叉树原理
+ * 对于一个二叉树来说，不管它以什么形态存在，它的空链表域个数一定多余非空链表域的个数。
+ * 利用空链表域存放指向其他节点的指针，这种指针就称为线索。
+ * <p>
+ * 建立线索的规则
+ * 1) 如果 node.left==null 则存放该节点中序遍历下的前驱结点
+ * 2) 如果 node.right==null 则存放该节点中序遍历下的后继节点
  */
 public class MorrisTraverse {
 
     /**
-     * morris 中序遍历
+     * Morris 中序遍历
      * <p>
      * 在中序遍历下，遍历顺序是： 左子节点 -> 根节点 -> 右子节点，
      * 从宏观上看可以看成是： 左子树 -> 根节点 -> 右子树
@@ -150,6 +159,7 @@ public class MorrisTraverse {
      */
     public TreeNode findMostRightNode(TreeNode currentNode) {
         TreeNode tmpNode = currentNode.left;
+        // Morris使用线索二叉树，前驱结点的右节点会存放指向当前节点的指针
         while (tmpNode.right != null && tmpNode.right != currentNode) {
             tmpNode = tmpNode.right;
         }
