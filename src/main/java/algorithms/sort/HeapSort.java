@@ -7,7 +7,7 @@ public class HeapSort {
 
 
     /**
-     * 调整为最大堆，从上往下将堆
+     * 调整为最大堆，从上往下遍历节点，保证当前正在校验的子堆的父节点大于子节点
      *
      * @param seq   要校准的子堆
      * @param start
@@ -18,8 +18,9 @@ public class HeapSort {
             int leftNode = 2 * start + 1;
             // 没有子节点，即叶子结点
             if (leftNode > end) return;
-            // 如果右节点存在，则比较两个节点的大小
+            // 如果右节点存在，则比较两个节点的大小，选出子节点中最大的节点和父节点进行比较就可以了
             if (leftNode + 1 <= end && seq[leftNode].compareTo(seq[leftNode + 1]) < 0) leftNode++;
+            // 如果父节点小于子节点中最大的节点，则进行交换
             if (seq[start].compareTo(seq[leftNode]) < 0) {
                 swap(seq, start, leftNode);
                 start = leftNode;
