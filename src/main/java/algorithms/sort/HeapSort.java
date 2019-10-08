@@ -7,7 +7,8 @@ public class HeapSort {
 
 
     /**
-     * 调整堆，从上往下遍历节点，保证当前正在校验的子堆的父节点大于子节点，即 arr[i]>=arr[2i+1] && arr[i]>=arr[2i+2]
+     * 从上到下调整堆，保证当前正在校验的子堆的父节点大于子节点，即 arr[i]>=arr[2i+1] && arr[i]>=arr[2i+2]，
+     * 并且将 start 节点调整到合适的位置，直到找不到比他更小的子节点
      *
      * @param seq   要校准的子堆
      * @param start
