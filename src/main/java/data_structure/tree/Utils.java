@@ -1,6 +1,8 @@
 package data_structure.tree;
 
-
+/**
+ * 树的其他常规操作
+ */
 public class Utils {
     /**
      * 计算当前树的最大深度

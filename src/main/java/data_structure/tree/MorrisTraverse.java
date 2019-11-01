@@ -36,7 +36,7 @@ public class MorrisTraverse {
      * @param rootNode
      * @return
      */
-    public void morrisInOrder(TreeNode rootNode) {
+    public static void morrisInOrder(TreeNode rootNode) {
         TreeNode currentNode = rootNode;
         while (currentNode != null) {
             // 没有左子节点，遍历右子节点
@@ -78,7 +78,7 @@ public class MorrisTraverse {
      * 节点的指针然后去遍历右子树，因此前序遍历和中序遍历类似，只是输出元素
      * 的顺序不同。
      */
-    public void morrisPreOrder(TreeNode root) {
+    public static void morrisPreOrder(TreeNode root) {
         TreeNode currentNode = root;
         while (currentNode != null) {
             // 没有左子节点，遍历右子节点
@@ -120,7 +120,7 @@ public class MorrisTraverse {
      *
      * @param root
      */
-    public void morrisPostOrder(TreeNode root) {
+    public static void morrisPostOrder(TreeNode root) {
         TreeNode tempNode = new TreeNode("tempNode");
         tempNode.left = root;
         TreeNode currentNode = tempNode;
@@ -152,12 +152,12 @@ public class MorrisTraverse {
 
 
     /**
-     * 找到当前节点左子树的最右结点(当前节点在中序遍历的前驱节点——左子树在中序遍历下最后一个被访问的节点)
+     * 找到当前节点左子树的最右结点(当前节点在中序遍历下的前驱节点——即当前节点的左子树在中序遍历下最后一个被访问的节点)
      *
      * @param currentNode
      * @return
      */
-    public TreeNode findMostRightNode(TreeNode currentNode) {
+    public static TreeNode findMostRightNode(TreeNode currentNode) {
         TreeNode tmpNode = currentNode.left;
         // Morris使用线索二叉树，前驱结点的右节点会存放指向当前节点的指针
         while (tmpNode.right != null && tmpNode.right != currentNode) {

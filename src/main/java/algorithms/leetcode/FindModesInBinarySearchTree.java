@@ -3,7 +3,13 @@ package algorithms.leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class FindModesInBinaryTree {
+/**
+ * 二叉搜索树中的查找模式
+ * 给定具有重复项的二叉搜索树(BST)，找到给定BST中的所有模式（即最常出现的元素）。
+ * <p>
+ * {@link <a href="https://leetcode.com/problems/find-mode-in-binary-search-tree/"></a>}
+ */
+public class FindModesInBinarySearchTree {
 
 
     public int[] findMode(TreeNode root) {
@@ -38,6 +44,11 @@ public class FindModesInBinaryTree {
         }
     }
 
+    /**
+     * 中序遍历
+     *
+     * @param root
+     */
     private void inorder(TreeNode root) {
         if (root == null) return;
         inorder(root.left);
@@ -64,6 +75,11 @@ public class FindModesInBinaryTree {
     }
 
 
+    /**
+     * 层序遍历
+     *
+     * @param root
+     */
     private void levelTraverse(TreeNode root) {
         if (root == null)
             return;
@@ -93,7 +109,7 @@ public class FindModesInBinaryTree {
         root.right.right.right.right = new TreeNode(4);
         root.right.right.right.right.right = new TreeNode(4);
         System.out.println(root.left.val);
-        FindModesInBinaryTree f = new FindModesInBinaryTree();
+        FindModesInBinarySearchTree f = new FindModesInBinarySearchTree();
         int[] a = f.findMode(root);
         System.out.println();
         for (int value : a) {
